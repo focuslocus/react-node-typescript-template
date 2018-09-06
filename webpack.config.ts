@@ -21,16 +21,6 @@ const config: webpack.Configuration = {
 	devtool: "source-map",
 	module: {
 		rules: [
-			// {
-			// 	test: /\.(ts|tsx)$/,
-			// 	loader: 'awesome-typescript-loader',
-			// 	exclude: /node_modules/,
-			// },
-			// {
-			// 	enforce: "pre",
-			// 	test: /\.js$/,
-			// 	loader: "source-map-loader"
-			// },
 			{
 				test: /\.(j|t)sx?$/,
 				exclude: /node_modules/,
@@ -48,7 +38,6 @@ const config: webpack.Configuration = {
 							"@babel/preset-react"
 						],
 						plugins: [
-							// plugin-proposal-decorators is only needed if you're using experimental decorators in TypeScript
 							"react-hot-loader/babel",
 						]
 					}
@@ -61,7 +50,7 @@ const config: webpack.Configuration = {
     new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
-			title: 'React / Typescript Frontend Boilerplate',
+			title: 'React / Node Boilerplate',
 			template: './app/assets/index.html',
 			favicon: './app/assets/favicon.png',
 			inject: 'body',

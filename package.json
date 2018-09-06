@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/focuslocus/Palate.git"
+    "url": "git+https://github.com/focuslocus/react-node-typescript-template.git"
   },
   "keywords": [
     "node",
@@ -24,9 +24,9 @@
   "author": "Jira Vinyoopongphan / Andrew Deal",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/focuslocus/Palate/issues"
+    "url": "https://github.com/focuslocus/react-node-typescript-template.git/issues"
   },
-  "homepage": "https://github.com/focuslocus/Palate#readme",
+  "homepage": "https://github.com/focuslocus/react-node-typescript-template#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^8.0.2",

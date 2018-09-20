@@ -2,6 +2,7 @@
 import * as webpack from 'webpack';
 import { resolve } from 'path';
 import HtmlWebpackPlugin = require('html-webpack-plugin');
+import WorkboxPlugin = require('workbox-webpack-plugin');
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const config: webpack.Configuration = {
@@ -46,8 +47,12 @@ const config: webpack.Configuration = {
 		]
 	},
 	plugins: [
+		new WorkboxPlugin.InjectManifest({
+			swDest: './service-worker.js',
+			swSrc: './src/app/sw/index.js'
+		}),
 		new ForkTsCheckerWebpackPlugin(),
-    new webpack.NamedModulesPlugin(),
+    	new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'React / Node Boilerplate',

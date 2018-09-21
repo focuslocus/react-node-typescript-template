@@ -1,12 +1,13 @@
 /* global __dirname */
 import * as webpack from 'webpack';
 import { resolve } from 'path';
+import WebpackPwaManifest = require('webpack-pwa-manifest');
 import HtmlWebpackPlugin = require('html-webpack-plugin');
 import WorkboxPlugin = require('workbox-webpack-plugin');
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const config: webpack.Configuration = {
-	mode:'development',
+	mode: 'development',
 	stats: {
 		warnings: true
 	},
@@ -19,27 +20,27 @@ const config: webpack.Configuration = {
 		filename: 'app.bundle.js',
 		publicPath: '/'
 	},
-	devtool: "source-map",
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{
 				test: /\.(j|t)sx?$/,
 				exclude: /node_modules/,
 				use: {
-					loader: "babel-loader",
+					loader: 'babel-loader',
 					options: {
 						cacheDirectory: true,
 						babelrc: false,
 						presets: [
 							[
-								"@babel/preset-env",
-								{ targets: { browsers: "last 2 versions" } } // or whatever your project requires
+								'@babel/preset-env',
+								{ targets: { browsers: 'last 2 versions' } } // or whatever your project requires
 							],
-							"@babel/preset-typescript",
-							"@babel/preset-react"
+							'@babel/preset-typescript',
+							'@babel/preset-react'
 						],
 						plugins: [
-							"react-hot-loader/babel",
+							'react-hot-loader/babel',
 						]
 					}
 				}
@@ -52,7 +53,7 @@ const config: webpack.Configuration = {
 			swSrc: './src/app/sw/index.js'
 		}),
 		new ForkTsCheckerWebpackPlugin(),
-    	new webpack.NamedModulesPlugin(),
+		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'React / Node Boilerplate',
@@ -63,6 +64,25 @@ const config: webpack.Configuration = {
 				js: ['dist/app.bundle.js'],
 				css: ['semantic/semantic.min.css']
 			}
+		}),
+		new WebpackPwaManifest({
+			'short_name': 'PWA',
+			'name': 'PWA Starter',
+			'icons': [
+				{
+					'src': './src/app/assets/homescreen_icon_192.png',
+					'size': '192x192'
+				},
+				{
+					'src': './src/app/assets/homescreen_icon_512.png',
+					'size': '512x512'
+				}
+			],
+			'start_url': '/?source=pwa',
+			'background_color': '#008B8B',
+			'display': 'standalone',
+			'scope': '/',
+			'theme_color': '#00b3b3'
 		})
 	],
 	resolve: {

@@ -48,10 +48,6 @@ const config: webpack.Configuration = {
 		]
 	},
 	plugins: [
-		new WorkboxPlugin.InjectManifest({
-			swDest: './service-worker.js',
-			swSrc: './src/app/sw/index.js'
-		}),
 		new ForkTsCheckerWebpackPlugin(),
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
@@ -83,7 +79,12 @@ const config: webpack.Configuration = {
 			'display': 'standalone',
 			'scope': '/',
 			'theme_color': '#00b3b3'
-		})
+		}),
+		new WorkboxPlugin.InjectManifest({
+			swDest: './service-worker.js',
+			swSrc: './src/app/sw/index.js',
+			include: [/\.html$/, /\.js$/]
+		}),
 	],
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.css', 'json']

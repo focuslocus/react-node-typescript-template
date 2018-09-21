@@ -16,9 +16,9 @@ const compiler = webpack(config);
 // Middleware
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler, {
-	log: false,
-	path: '/__hmr',
-	heartbeat: 2000
+    log: false,
+    path: '/__hmr',
+    heartbeat: 2000
 }));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -38,14 +38,14 @@ app.use((req, res, next) => {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use((err: any, req, res, next) => {
-        res.status(err.status || 500).json({ message: err.message, error: err});
+        res.status(err.status || 500).json({ message: err.message, error: err });
     });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
-    res.status(err.status || 500).json({ message: err.message, error: err});
+    res.status(err.status || 500).json({ message: err.message, error: err });
 });
 
 module.exports = app;

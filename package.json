@@ -45,6 +45,7 @@
     "react-router-dom": "^4.2.2",
     "semantic-ui-css": "^2.2.14",
     "semantic-ui-react": "^0.77.2",
+    "webpack-pwa-manifest": "^3.7.1",
     "workbox": "^0.0.0",
     "workbox-webpack-plugin": "^3.6.1"
   },

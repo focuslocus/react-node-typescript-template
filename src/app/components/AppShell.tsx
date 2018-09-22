@@ -32,7 +32,7 @@ const AppShell = class AppShell extends React.Component<WithStyles<typeof styles
   showNotification() {
     if (Notification.permission == 'granted') {
       navigator.serviceWorker.getRegistration().then(reg => {
-        reg.showNotification('You\'ve been notified', { body: 'of this message', icon: 'homescreen_icon_192' });
+        reg.showNotification('You\'ve been notified', { body: 'of this message' });
       });
     }
   }

@@ -28,6 +28,15 @@ const styles = createStyles({
 });
 
 const AppShell = class AppShell extends React.Component<WithStyles<typeof styles>, {}> {
+
+  showNotification() {
+    if (Notification.permission == 'granted') {
+      navigator.serviceWorker.getRegistration().then(reg => {
+        reg.showNotification('You\'ve been notified', { body: 'of this message', icon: 'homescreen_icon_192' });
+      });
+    }
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -40,13 +49,13 @@ const AppShell = class AppShell extends React.Component<WithStyles<typeof styles
             <Typography variant='title' color='inherit' className={classes.grow}>
               PWA App Shell
             </Typography>
-            <Button color='inherit'>Enable Push Notifications</Button>
+            <Button onClick={(event: React.MouseEvent<HTMLElement>) => this.showNotification()} color='inherit'>Notify</Button>
           </Toolbar>
         </AppBar>
         <Grid container>
           <Grid item xs={12}>
             <Grid container justify={'center'}>
-              <CircularProgress className={classes.spinner}/>
+              <CircularProgress className={classes.spinner} />
             </Grid>
           </Grid>
         </Grid>

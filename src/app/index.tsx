@@ -1,8 +1,13 @@
+import { hot } from 'react-hot-loader';
 import * as React from 'react';
 import { render } from 'react-dom';
-import * as ReactDOM from 'react-dom';
-import App from './App';
+
+import { registerServiceWorker } from './sw/register';
+import Shell from './components/AppShell';
+
+registerServiceWorker();
 
 const root = document.getElementById('root');
 
-render(<App />, root);
+const AppShell = hot(module)(Shell);
+render(<AppShell />, root);

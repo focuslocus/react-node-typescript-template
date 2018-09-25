@@ -12,7 +12,7 @@ const config: webpack.Configuration = {
     warnings: true
   },
   entry: [
-    'webpack-hot-middleware/client?path=/__hmr&reload=true&timeout=2000',
+    'webpack-hot-middleware/client?path=https://127.0.0.1/__hmr&reload=true&timeout=2000',
     './src/app/index.tsx'
   ],
   output: {

@@ -6,9 +6,19 @@
 
 const app = require('./index');
 const debug = require('debug')('src:src');
-const http = require('http');
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
 
 require('dotenv').config();
+
+/**
+ * SSL self-signed credentials.
+ */
+
+const privateKey  = fs.readFileSync(path.resolve(__dirname + '../../../../server.key'), 'utf8');
+const certificate = fs.readFileSync(path.resolve(__dirname + '../../../../server.crt'), 'utf8');
+const credentials = {key: privateKey, cert: certificate};
 
 /**
  * Get port from environment and store in Express.
@@ -21,7 +31,7 @@ app.set('port', port);
  * Create HTTP src.
  */
 
-const server = http.createServer(app);
+const server = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.

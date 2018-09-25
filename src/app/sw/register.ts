@@ -1,4 +1,4 @@
-export const registerServiceWorker = function () {
+export const registerServiceWorker = function (): void {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js').then(registration => {
@@ -8,9 +8,9 @@ export const registerServiceWorker = function () {
       });
     });
   }
-}
+};
 
-export const enablePushNotifications = function () {
+export const enablePushNotifications = function (): void {
   if (!('Notification' in window)) {
     console.error('This browser does not support notifications!');
   } else {
@@ -18,4 +18,4 @@ export const enablePushNotifications = function () {
       console.log('Notification permission status:', status);
     });
   }
-}
+};

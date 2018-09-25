@@ -27,9 +27,9 @@ const styles = createStyles({
   }
 });
 
-const AppShell = class AppShell extends React.Component<WithStyles<typeof styles>, {}> {
+class AppShellBase extends React.Component<WithStyles<typeof styles>, {}> {
 
-  showNotification() {
+  showNotification(): void {
     if (Notification.permission == 'granted') {
       navigator.serviceWorker.getRegistration().then(reg => {
         reg.showNotification('You\'ve been notified', { body: 'of this message' });
@@ -37,7 +37,7 @@ const AppShell = class AppShell extends React.Component<WithStyles<typeof styles
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { classes } = this.props;
     return (
       <div>
@@ -65,4 +65,4 @@ const AppShell = class AppShell extends React.Component<WithStyles<typeof styles
   }
 };
 
-export default withRoot(withStyles(styles, { withTheme: true })(AppShell));
+export const AppShellComponent = withRoot(withStyles(styles, { withTheme: true })(AppShellBase));

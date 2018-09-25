@@ -83,7 +83,7 @@ const config: webpack.Configuration = {
     new WorkboxPlugin.InjectManifest({
       swDest: './service-worker.js',
       swSrc: './src/app/sw/index.js',
-      include: [/\.html$/, /\.js$/]
+      include: [/\.html$/, /\.js$/, /\.png$/]
     }),
   ],
   resolve: {

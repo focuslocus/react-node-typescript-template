@@ -2,10 +2,11 @@ import { hot } from 'react-hot-loader';
 import * as React from 'react';
 import { render } from 'react-dom';
 
-import { registerServiceWorker } from './sw/register';
+import { registerServiceWorker, enablePushNotifications } from './sw/register';
 import Shell from './components/AppShell';
 
 registerServiceWorker();
+enablePushNotifications();
 
 const root = document.getElementById('root');
 

@@ -1,4 +1,5 @@
 import * as express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 import * as cookieParser from 'cookie-parser';
@@ -10,11 +11,11 @@ import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import * as webpackHotMiddleware from 'webpack-hot-middleware';
 import config from '../../webpack.config';
 
-const app: express.Express = express();
+const app: express.Application = express();
 const compiler = webpack(config);
 
 // Middleware
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+app.use(webpackDevMiddleware(compiler, { publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler, {
     log: false,
     path: '/__hmr',
@@ -26,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
     const err: any = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -37,14 +38,14 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use((err: any, req, res, next) => {
+    app.use((err: any, req: Request, res: Response, next: NextFunction) => {
         res.status(err.status || 500).json({ message: err.message, error: err });
     });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res, next) => {
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     res.status(err.status || 500).json({ message: err.message, error: err });
 });
 

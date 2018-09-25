@@ -14,7 +14,7 @@ require('dotenv').config();
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port: any = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -35,8 +35,8 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
-    const port = parseInt(val, 10);
+function normalizePort(val: any): string | boolean | number {
+    const port: number = parseInt(val, 10);
 
     if (isNaN(port)) {
         // named pipe
@@ -60,7 +60,7 @@ function onError(error: any) {
         throw error;
     }
 
-    const bind = typeof port === 'string'
+    const bind: string = typeof port === 'string'
         ? `Pipe ${port}`
         : `Port ${port}`;
 
@@ -83,10 +83,10 @@ function onError(error: any) {
  * Event listener for HTTP src "listening" event.
  */
 
-function onListening() {
-    const addr = server.address();
+function onListening(): void {
+    const addr: {port: number} = server.address();
     console.log('Listening on port', addr.port);
-    const bind = typeof addr === 'string'
+    const bind: string = typeof addr === 'string'
         ? `pipe ${addr}`
         : `port ${addr.port}`;
     debug(`Listening on ${bind}`);

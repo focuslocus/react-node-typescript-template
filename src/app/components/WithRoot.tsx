@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -17,7 +16,7 @@ const theme = createMuiTheme({
 });
 
 function withRoot<P>(Component: React.ComponentType<P>) {
-  function WithRoot(props: P) {
+  let WithRoot: React.SFC<{}> = (props: P) => {
     // MuiThemeProvider makes the theme available down the React tree
     // thanks to React context.
     return (

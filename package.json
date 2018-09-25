@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "rm -rf dist && yarn run build",
     "dev": "concurrently \"npm run watch\" \"nodemon dist/src/server/www.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "build": "tsc -p .",
     "watch": "tsc -w",
@@ -78,6 +78,7 @@
     "file-loader": "^1.1.6",
     "fork-ts-checker-webpack-plugin": "^0.4.9",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.12.1",
     "react-hot-loader": "^4.3.5",
     "source-map-loader": "^0.2.4",

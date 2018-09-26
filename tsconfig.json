@@ -28,6 +28,8 @@
         ]
     },
     "include": [
-        "src/**/*"
+        "src/types/*",
+        "src/server/*",
+        "./webpack.config.ts"
     ]
 }

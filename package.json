@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "TODO | Product Tag Line",
   "main": "index.js",
+  "engines": {
+    "node": "10.11.0",
+    "npm": "6.4.1"
+  },
+  "os" : [ "darwin"],
   "scripts": {
     "predev": "rm -rf dist && yarn run build",
     "dev": "concurrently \"npm run watch\" \"nodemon dist/src/server/www.js\"",

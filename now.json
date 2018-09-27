@@ -2,5 +2,10 @@
     "alias": ["pwa-starter"],
     "engines": {
         "node": "10.11.0"
+    },
+    "build": {
+        "env": {
+            "NODE_ENV": "production"
+        }
     }
 }

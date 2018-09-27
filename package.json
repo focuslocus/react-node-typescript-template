@@ -3,13 +3,19 @@
   "version": "0.0.0",
   "description": "TODO | Product Tag Line",
   "main": "index.js",
+  "engines": {
+    "node": "8.12.0",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "predev": "rm -rf dist && yarn run build",
     "dev": "concurrently \"npm run watch\" \"nodemon dist/src/server/www.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "build": "tsc -p . && webpack --config dist/webpack.config.js",
+    "build": "npm run build-ts && npm run webpack",
+    "build-ts": "tsc -p .",
     "watch": "tsc -w",
+    "webpack": "webpack --config dist/webpack.config.js",
     "start": "NODE_ENV=production node dist/src/server/www.js"
   },
   "repository": {

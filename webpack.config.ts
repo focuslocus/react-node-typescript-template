@@ -7,20 +7,15 @@ import WorkboxPlugin = require('workbox-webpack-plugin');
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const config: webpack.Configuration = {
-  mode: 'development',
-  stats: {
-    warnings: true
-  },
   entry: [
     'webpack-hot-middleware/client?path=/__hmr&reload=true&timeout=2000',
     './src/app/index.tsx'
   ],
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: __dirname,
     filename: 'app.bundle.js',
     publicPath: '/'
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {

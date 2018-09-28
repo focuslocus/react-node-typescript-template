@@ -8,9 +8,10 @@
     "dev": "concurrently \"npm run watch\" \"nodemon dist/src/server/www.js\"",
     "test": "jest",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "build": "tsc -p . && webpack --config dist/webpack.config.js",
+    "build": "tsc -p . && webpack --config dist/webpack.config.js --env.production",
     "watch": "tsc -w",
-    "start": "NODE_ENV=production node dist/src/server/www.js"
+    "start": "NODE_ENV=production node dist/src/server/www.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",

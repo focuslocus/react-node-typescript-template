@@ -88,4 +88,4 @@ const config = function (env: any): webpack.Configuration {
   };
 };
 
-  export default config;
+export default config;
